@@ -7,4 +7,6 @@ urlpatterns = [
     path("api/banks/", include("banks.urls")),
 
     path("api/calculate/", include("calculator.urls")),
+
+    path("api/history/", include("history.urls")),
 ]

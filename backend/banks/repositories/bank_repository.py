@@ -34,3 +34,37 @@ class BankRepository:
         return BankRepository.get_collection().delete_one(
             {"_id": ObjectId(bank_id)}
         )
+
+    @staticmethod
+    def update(bank_id, data):
+        BankRepository.get_collection().update_one(
+            {"_id": ObjectId(bank_id)},
+            {"$set": data}
+        )
+
+    @staticmethod
+    def delete(bank_id):
+        BankRepository.get_collection().delete_one(
+            {"_id": ObjectId(bank_id)}
+        )
+
+    @staticmethod
+    def get_by_id(bank_id):
+        return BankRepository.get_collection().find_one(
+            {"_id": ObjectId(bank_id)}
+        )
+
+    @staticmethod
+    def get_by_code(bank_code):
+        return BankRepository.get_collection().find_one(
+            {"bank_code": bank_code}
+        )
+
+    @staticmethod
+    def filter_by_loan_type(loan_type):
+        return list(
+            BankRepository.get_collection().find(
+                {"loan_types": loan_type}
+
+            )
+    )

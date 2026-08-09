@@ -4,3 +4,7 @@ class EMICalculatorSerializer(serializers.Serializer):
     principal = serializers.FloatField()
     interest_rate = serializers.FloatField()
     tenure = serializers.IntegerField()
+
+class BankComparisonSerializer(serializers.Serializer):
+    principal = serializers.FloatField()
+    tenure = serializers.IntegerField()

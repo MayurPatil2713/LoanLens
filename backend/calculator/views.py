@@ -28,6 +28,19 @@ class EMICalculatorView(APIView):
                     tenure_years=data["tenure"]
                 )
 
+                from history.services.history_service import HistoryService
+                
+                history_data = {
+                    "principal": data["principal"],
+                    "interest_rate": data["interest_rate"],
+                    "tenure": data["tenure"],
+                    "monthly_emi": result["monthly_emi"],
+                    "total_interest": result["total_interest"],
+                    "total_payment": result["total_payment"]
+                }
+
+                HistoryService.save(history_data)
+
                 return Response(result, status=status.HTTP_200_OK)
 
             except ValueError as e:

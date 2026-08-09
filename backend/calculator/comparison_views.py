@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import EMICalculatorSerializer
+from .serializers import BankComparisonSerializer
 from .services.comparison_service import ComparisonService
 
 
@@ -10,7 +10,7 @@ class BankComparisonView(APIView):
 
     def post(self, request):
 
-        serializer = EMICalculatorSerializer(data=request.data)
+        serializer = BankComparisonSerializer(data=request.data)
 
         if serializer.is_valid():
 
